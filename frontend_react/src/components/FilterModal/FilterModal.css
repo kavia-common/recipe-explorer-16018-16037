@@ -1,0 +1,253 @@
+.filter-modal {
+  width: 90vw;
+  max-width: 400px;
+  max-height: 90vh;
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--color-white);
+}
+
+.filter-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-base);
+}
+
+.close-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.filter-content {
+  padding: var(--spacing-lg);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.filter-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-label {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Chip styles based on Figma design */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-green-medium);
+  background-color: var(--color-white);
+  color: var(--color-green-medium);
+  height: 27px;
+  line-height: 1;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-green-primary);
+  color: var(--color-green-primary);
+}
+
+.chip-solid {
+  background-color: var(--color-green-primary);
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+}
+
+.chip-solid:hover {
+  background-color: var(--primary-color);
+}
+
+.chip-outline {
+  background-color: var(--color-white);
+  color: var(--color-green-medium);
+  border-color: var(--color-green-medium);
+}
+
+/* Rating chip specific styles */
+.rating-chip {
+  min-width: 50px;
+  justify-content: center;
+}
+
+.rate-text {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.star {
+  font-size: 12px;
+  margin-left: 2px;
+}
+
+/* Category chip with icon */
+.chip-icon {
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+/* Filter actions */
+.filter-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+}
+
+.reset-btn,
+.apply-btn {
+  flex: 1;
+  height: 44px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  justify-content: center;
+}
+
+.reset-btn {
+  background: var(--color-white);
+  color: var(--color-green-primary);
+  border: 1px solid var(--color-green-primary);
+}
+
+.reset-btn:hover {
+  background: rgba(18, 149, 117, 0.1);
+}
+
+.apply-btn {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+  border: none;
+}
+
+.apply-btn:hover {
+  background: var(--primary-color);
+}
+
+/* Custom scrollbar for content */
+.filter-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filter-content::-webkit-scrollbar-thumb {
+  background: var(--color-green-medium);
+  border-radius: 3px;
+}
+
+.filter-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-green-primary);
+}
+
+/* Accessibility focus styles */
+.chip:focus,
+.close-btn:focus,
+.reset-btn:focus,
+.apply-btn:focus {
+  outline: 2px solid var(--color-green-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .filter-modal {
+    width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .filter-header,
+  .filter-content,
+  .filter-actions {
+    padding: var(--spacing-md);
+  }
+  
+  .filter-section {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .chips-container {
+    gap: var(--spacing-xs);
+  }
+  
+  .chip {
+    font-size: 10px;
+    padding: 4px var(--spacing-xs);
+    height: 24px;
+  }
+  
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .reset-btn,
+  .apply-btn {
+    height: 40px;
+  }
+}
+
+/* Animation for modal entrance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.filter-modal {
+  animation: fadeIn 0.2s ease-out;
+}

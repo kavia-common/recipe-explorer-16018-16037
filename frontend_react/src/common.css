@@ -1,0 +1,137 @@
+:root {
+  /* Color tokens (shared across screens) */
+  --color-ffffff: #ffffff;
+  --color-000000: #000000;
+  --color-129575: #129575;
+  --color-4cd964: #4cd964;
+  --color-71b1a1: #71b1a1;
+
+  /* Typography tokens used on splash + filter (from design_system) */
+  /* typo_55: Poppins 18 600 lh 27 center color white */
+  --typo-55-family: "Poppins", Arial, Helvetica, sans-serif;
+  --typo-55-size: 18px;
+  --typo-55-weight: 600;
+  --typo-55-line-height: 27px;
+  --typo-55-align: center;
+  --typo-55-color: var(--color-ffffff);
+
+  /* typo_56: Poppins 50 600 lh 60 center color white */
+  --typo-56-family: "Poppins", Arial, Helvetica, sans-serif;
+  --typo-56-size: 50px;
+  --typo-56-weight: 600;
+  --typo-56-line-height: 60px;
+  --typo-56-align: center;
+  --typo-56-color: var(--color-ffffff);
+
+  /* typo_57: Poppins 16 400 lh 24 center color white */
+  --typo-57-family: "Poppins", Arial, Helvetica, sans-serif;
+  --typo-57-size: 16px;
+  --typo-57-weight: 400;
+  --typo-57-line-height: 24px;
+  --typo-57-align: center;
+  --typo-57-color: var(--color-ffffff);
+
+  /* typo_58: Poppins 16 600 lh 24 center color white */
+  --typo-58-family: "Poppins", Arial, Helvetica, sans-serif;
+  --typo-58-size: 16px;
+  --typo-58-weight: 600;
+  --typo-58-line-height: 24px;
+  --typo-58-align: center;
+  --typo-58-color: var(--color-ffffff);
+
+  /* Common artboard dimensions (may be overridden per screen) */
+  --screen-width: 375px;
+  --screen-height: 812px;
+
+  /* Style tokens used */
+  /* style_10: background white, border-radius 30 */
+  --style-10-bg: var(--color-ffffff);
+  --style-10-radius: 30px;
+
+  /* style_11: background #129575, radius 10 */
+  --style-11-bg: var(--color-129575);
+  --style-11-radius: 10px;
+
+  /* status/home indicator helpers */
+  --status-symbol-color: var(--color-000000);
+  --home-indicator-bg: var(--color-ffffff);
+  --home-indicator-radius: 100px;
+}
+
+/* CSS reset for our sandbox page */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--style-10-bg);
+  font-family: var(--typo-57-family);
+}
+
+/* Artboard container to match Figma frame */
+.screen {
+  width: var(--screen-width);
+  height: var(--screen-height);
+  background: var(--style-10-bg);
+  border-radius: var(--style-10-radius);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Utility typesetters */
+.typo-55 {
+  font-family: var(--typo-55-family);
+  font-size: var(--typo-55-size);
+  font-weight: var(--typo-55-weight);
+  line-height: var(--typo-55-line-height);
+  color: var(--typo-55-color);
+  text-align: center;
+}
+.typo-56 {
+  font-family: var(--typo-56-family);
+  font-size: var(--typo-56-size);
+  font-weight: var(--typo-56-weight);
+  line-height: var(--typo-56-line-height);
+  color: var(--typo-56-color);
+  text-align: center;
+  white-space: pre-line; /* supports the Get\nCooking line break */
+}
+.typo-57 {
+  font-family: var(--typo-57-family);
+  font-size: var(--typo-57-size);
+  font-weight: var(--typo-57-weight);
+  line-height: var(--typo-57-line-height);
+  color: var(--typo-57-color);
+  text-align: center;
+}
+.typo-58 {
+  font-family: var(--typo-58-family);
+  font-size: var(--typo-58-size);
+  font-weight: var(--typo-58-weight);
+  line-height: var(--typo-58-line-height);
+  color: var(--typo-58-color);
+  text-align: center;
+}
+
+/* Primary button (style_11 + label typo_58) */
+.btn-primary {
+  background: var(--style-11-bg);
+  color: var(--typo-58-color);
+  border: none;
+  border-radius: var(--style-11-radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0; /* we will size to Figma frame */
+  cursor: pointer;
+}
+
+/* Hidden accessible label helper for icons-only if needed */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,1px,1px);
+  border: 0;
+}
