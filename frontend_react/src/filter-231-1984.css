@@ -1,0 +1,215 @@
+:root {
+  /* Additional tokens from design system used by this screen */
+  --color-71b1a1: #71b1a1; /* style_44 background, typo_99/101 color */
+  --color-121212: #121212;
+  --chip-radius: 10px; /* style_78/style_81 */
+  --chip-border: 1px;
+  --chip-gap: 10px;
+  --section-gap: 20px;
+
+  /* Typography shortcuts from design system */
+  --typo-98-family: "Poppins", Arial, Helvetica, sans-serif;
+  --typo-98-size: 14px;
+  --typo-98-weight: 600;
+  --typo-98-line: 21px;
+  --typo-98-color: #000000;
+
+  --typo-99-color: var(--color-71b1a1);
+  --typo-100-color: #ffffff;
+  --typo-101-weight: 500; /* 11px medium, color 71b1a1 */
+  --typo-102-weight: 500; /* 11px medium, color white */
+  --typo-103-color: #ffffff;
+}
+
+/* Override screen height for this specific frame (375 x 484) */
+.filter-screen {
+  height: 484px;
+  border-radius: 30px;
+}
+
+/* Background rectangle */
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-ffffff);
+}
+
+/* Title "Filter Search" at y:-71 within frame; place with padding top to emulate spacing */
+.title {
+  position: absolute;
+  left: 144px; /* 2644 - 2501 = 143; center approx at 89px width -> align visually */
+  top: 16px;
+  margin: 0;
+  font-family: var(--typo-98-family);
+  font-size: var(--typo-98-size);
+  font-weight: var(--typo-98-weight);
+  line-height: var(--typo-98-line);
+  color: var(--typo-98-color);
+}
+
+/* Section grouping */
+.section-group {
+  position: absolute;
+  left: 30px; /* 2531 - 2501 */
+}
+.section-label {
+  margin: 0 0 8px 0;
+  font-family: var(--typo-98-family);
+  font-size: var(--typo-98-size);
+  font-weight: var(--typo-98-weight);
+  line-height: var(--typo-98-line);
+  color: var(--typo-98-color);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--chip-gap);
+}
+
+/* Time group coordinates y:-30 in figma group; align near top below title */
+.time-group {
+  top: 55px;
+  width: 315px;
+}
+
+/* Rate group y:48 */
+.rate-group {
+  top: 118px;
+  width: 315px;
+}
+
+/* Category group y:127 */
+.category-group {
+  top: 197px;
+  width: 315px;
+}
+
+/* Chip base */
+.chip {
+  height: 27px;
+  padding: 5px 12px;
+  border-radius: var(--chip-radius);
+  border-width: var(--chip-border);
+  border-style: solid;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 17px;
+  cursor: pointer;
+  background: #ffffff;
+  color: var(--color-71b1a1); /* outline variant default text: typo_99 */
+  border-color: var(--color-71b1a1); /* style_78 */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Solid (selected) variant style_81 */
+.chip-solid {
+  background: var(--color-129575);
+  color: #ffffff; /* typo_100/102 */
+  border-color: #ffffff;
+}
+
+/* Outline (unselected) variant style_78 already described by defaults */
+.chip-outline {
+  background: #ffffff;
+}
+
+/* Rating chip specifics */
+.rating-chip .rate-text {
+  font-size: 11px;
+}
+
+/* Star visual (no SVG provided, emulate simple star dot/diamond) */
+.star {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+}
+.star-filled {
+  background: var(--color-71b1a1); /* style_80 */
+}
+.star-outline {
+  background: #ffffff; /* style_83 background white to contrast on green chip */
+  box-shadow: 0 0 0 1px #ffffff inset; /* subtle inner outline */
+}
+
+/* Icon chip with star (Dinner) */
+.icon-chip .chip-icon-star {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: var(--color-71b1a1);
+  border-radius: 2px;
+}
+
+/* Primary Filter button at x:2601, y:289 -> left ~100px area; width 174 height 37 */
+.filter-btn {
+  position: absolute;
+  left: 100px; /* center within 375: (375-174)/2 = 100.5 */
+  top: 289px;
+  width: 174px;
+  height: 37px;
+  border-radius: 10px;
+}
+.filter-btn .btn-label {
+  color: var(--typo-103-color);
+}
+
+/* Home indicator (component at bottom y:348, height 34) */
+.home-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 348px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-indicator .home-line {
+  width: 135px;
+  height: 5px;
+  background: var(--home-indicator-bg);
+  border-radius: var(--home-indicator-radius);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
+}
+
+/* Accessibility focus */
+.chip:focus,
+.filter-btn:focus {
+  outline: 2px solid #71b1a1;
+  outline-offset: 2px;
+}
+
+/* Typography helpers reused from design tokens */
+.typo-98 {
+  font-family: var(--typo-98-family);
+  font-size: var(--typo-98-size);
+  font-weight: var(--typo-98-weight);
+  line-height: var(--typo-98-line);
+  color: var(--typo-98-color);
+}
+.typo-101 {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: var(--typo-101-weight);
+  line-height: 16.5px;
+  color: var(--typo-99-color);
+}
+.typo-102 {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: var(--typo-102-weight);
+  line-height: 16.5px;
+  color: var(--typo-100-color);
+}
+.typo-103 {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16.5px;
+  color: var(--typo-103-color);
+}

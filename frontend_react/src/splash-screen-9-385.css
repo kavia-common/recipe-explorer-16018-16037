@@ -1,0 +1,203 @@
+.splash-screen {
+  /* The Figma frame has border radius 30 (style_10) and white background via common.css */
+  position: relative;
+}
+
+/* Status Bar approximation
+   Figma dims: x:11 y:-430 width:375 height:44 within overall artboard.
+   On device, this is at top; we render within our 812px screen height.
+*/
+.status-bar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-000000);
+  font-family: "SF Pro Display", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+  font-size: 15px; /* typo_59 size */
+  line-height: 18px;
+}
+.status-bar .time {
+  margin-left: 26px; /* approximate to match 40.5 x offset in figma to frame edge */
+  font-weight: 500;
+}
+.status-bar .status-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 12px;
+}
+.status-bar .cellular,
+.status-bar .wifi,
+.status-bar .battery {
+  width: 18px;
+  height: 12px;
+  position: relative;
+}
+.status-bar .cellular::before,
+.status-bar .wifi::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--status-symbol-color);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+.status-bar .battery {
+  width: 24px;
+  height: 12px;
+  border: 1px solid var(--status-symbol-color);
+  border-radius: 2px;
+}
+.status-bar .battery::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 3px;
+  width: 2px;
+  height: 6px;
+  background: var(--status-symbol-color);
+  border-radius: 1px;
+}
+.status-bar .battery .battery-level {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  right: 6px;
+  bottom: 2px;
+  background: var(--color-4cd964);
+  border-radius: 1.6px;
+}
+
+/* Logo Cluster (Frame 2)
+   Figma: x:94 y:-326 width:209 height:120
+   On the artboard, this sits near the top visually; we position proportionally for a centered splash feel.
+*/
+.logo-cluster {
+  position: absolute;
+  left: 94px;
+  top: 100px;
+  width: 209px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px; /* 79px logo height + some spacing to 27px text height results in 120 total; space between roughly ~14px, use 17 for optical */
+}
+.logo-cluster .logo-box {
+  width: 79px;
+  height: 79px;
+  border-radius: 20px; /* not specified; keeping subtle rounding */
+  background: #d9d9d9;
+  opacity: 0.4; /* placeholder visual; actual image not provided */
+}
+.logo-cluster .logo-caption {
+  width: 209px;
+  height: 27px; /* align with figma height of text node */
+}
+
+/* Hero text block (Text frame) Figma: x:61 y:16 width:275 height:164 */
+.hero-text {
+  position: absolute;
+  left: 61px;
+  top: 250px; /* placed below logo cluster for natural flow */
+  width: 275px;
+  height: 164px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-text .title {
+  width: 213px; /* from figma text node */
+  height: 120px;
+  margin: 0;
+}
+.hero-text .subtitle {
+  width: 275px;
+  height: 24px;
+  margin: 20px 0 0 0; /* creates breathing room between title and caption */
+}
+
+/* CTA Button (Medium Button) Figma: x:77 y:244 width:243 height:54 */
+.cta {
+  position: absolute;
+  left: 77px;
+  top: 464px; /* position to align visually under hero text; (250 + 164) ~ 414, + padding ~ 50 */
+  width: 243px;
+  height: 54px;
+  border-radius: 10px; /* style_11 */
+}
+.cta .cta-label {
+  /* centers via flex of .btn-primary; no extra styles required beyond typo-58 */
+}
+.icon-arrow {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.icon-arrow .arrow-head {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 13px;
+  height: 2px;
+  background: var(--color-ffffff);
+  transform: translateY(-50%);
+}
+.icon-arrow .arrow-head::after,
+.icon-arrow .arrow-head::before {
+  content: "";
+  position: absolute;
+  right: -1px;
+  width: 7px;
+  height: 2px;
+  background: var(--color-ffffff);
+  transform-origin: right center;
+}
+.icon-arrow .arrow-head::after {
+  transform: rotate(45deg);
+  top: -4px;
+}
+.icon-arrow .arrow-head::before {
+  transform: rotate(-45deg);
+  top: 4px;
+}
+
+/* Home Indicator (Line) Figma: line 135x5 at x:131 y:369 within component at bottom */
+.home-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px; /* provide space inside 34px home indicator area */
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-indicator .home-line {
+  width: 135px;
+  height: 5px;
+  background: var(--home-indicator-bg);
+  border-radius: var(--home-indicator-radius);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.02); /* faint separation */
+}
+
+/* Accessibility focus styles */
+button:focus {
+  outline: 2px solid rgba(255,255,255,0.9);
+  outline-offset: 2px;
+}
+
+/* Optional responsive scaling preview outside 375px viewport */
+@media (min-width: 376px) {
+  body {
+    background: #f0f0f0;
+    padding: 24px 0;
+  }
+}
